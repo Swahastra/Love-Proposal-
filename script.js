@@ -21,14 +21,11 @@ document.getElementById('bubu-gif').style.display = 'block';
 setTimeout(() => {
     document.getElementById('dudu-gif').style.display = 'block';
     document.getElementById('proposal-text').style.display = 'block';
-
-    // Play proposal music when the proposal message appears
-    document.getElementById('proposal-music').play();
+    playMusic('proposal-music'); // Play music when proposal text appears
 }, 2000);
 
 function triggerYesCondition() {
-    // Stop other music
-    stopAllMusic();
+    stopAllMusic(); // Stop all music
 
     // Replace bubu GIF with yes GIF
     document.getElementById('bubu-gif').style.display = 'none';
@@ -45,7 +42,7 @@ function triggerYesCondition() {
     document.getElementById('thank-you-message').style.display = 'block';
 
     // Play thank-you music
-    document.getElementById('thankyou-music').play();
+    playMusic('thankyou-music');
 
     // Animate heart emojis inside the blur container
     animateEmojis('💕');
@@ -57,8 +54,7 @@ function triggerYesCondition() {
 }
 
 function triggerNoCondition() {
-    // Stop other music
-    stopAllMusic();
+    stopAllMusic(); // Stop all music
 
     // Keep Bubu GIF in place
     document.getElementById('bubu-gif').style.display = 'block';
@@ -71,7 +67,7 @@ function triggerNoCondition() {
     document.getElementById('rejection-message').style.display = 'block';
 
     // Play rejection music
-    document.getElementById('rejection-music').play();
+    playMusic('rejection-music');
 
     // Animate sad emojis inside the blur container
     animateEmojis('😭');
@@ -81,6 +77,25 @@ function triggerNoCondition() {
     document.getElementById('no-button').style.display = 'block';
 }
 
+// Function to play music by ID
+function playMusic(audioId) {
+    stopAllMusic(); // Ensure all other music is stopped
+    let audio = document.getElementById(audioId);
+    if (audio) {
+        audio.play();
+    }
+}
+
+// Function to stop all audio
+function stopAllMusic() {
+    let audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+
+// Function to animate emojis (reusable for hearts and sad faces)
 function animateEmojis(emoji) {
     let container = document.getElementById('emoji-container');
     container.innerHTML = '';  // Clear any previous emojis
@@ -94,14 +109,4 @@ function animateEmojis(emoji) {
             emojiElement.style.opacity = '1';  // Animate the emoji to become visible
         }, i * 100); // Stagger the animations
     }
-}
-
-function stopAllMusic() {
-    // Stop all the audio
-    document.getElementById('proposal-music').pause();
-    document.getElementById('proposal-music').currentTime = 0; // Reset time
-    document.getElementById('rejection-music').pause();
-    document.getElementById('rejection-music').currentTime = 0; // Reset time
-    document.getElementById('thankyou-music').pause();
-    document.getElementById('thankyou-music').currentTime = 0; // Reset time
 }
