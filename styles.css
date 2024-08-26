@@ -1,0 +1,124 @@
+body {
+    font-family: Georgia, sans-serif;
+    background-color: #e8c6ac;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+}
+
+.blur-container {
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    position: relative; /* Allows for absolute positioning inside */
+    overflow: hidden;
+}
+
+
+.dudu-gif {
+    width: 50%;
+    position: absolute;
+    right: -10px; /* Position outside the right side of blur-container */
+    top: 50%;
+    transform: translateY(-50%);
+    display: none; /* Visible initially */
+}
+
+.bubu-gif {
+    width: 50%;
+    position: absolute;
+    left: 30px; /* Position outside the left side of blur-container */
+    top: 40%;
+    transform: translateY(-50%);
+    display: block; /* Hidden initially */
+}
+/* Flip the GIF horizontally */
+.flip-horizontal {
+    transform: scaleX(-1);
+}
+
+
+.crying-gif {
+    width: 50%;
+    position: absolute;
+    right: -10px; /* Position outside the right side of blur-container */
+    top: 80%;
+    transform: translateY(-50%);
+    display: none; /* Visible initially */
+}
+.yes-gif {
+    width: 70%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Hidden initially */
+}
+
+.proposal-text, .thank-you-message, .rejection-message {
+    display: none; /* Hidden initially */
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.emoji-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%; /* Ensure the container takes up the full height */
+    display: flex;
+    flex-wrap: wrap; /* Allow emojis to wrap to new lines */
+    justify-content: center; /* Center emojis horizontally */
+    align-items: flex-end; /* Align emojis at the bottom */
+    gap: 10px; /* Space between emojis */
+}
+
+.emoji-container span {
+    font-size: 22px; /* Adjust as needed */
+    animation: riseUp 4s linear forwards;
+    opacity: 0; /* Initially hidden */
+    position: relative; /* Ensure emojis are positioned relative to container */
+}
+
+
+@keyframes riseUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-500%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-1300%);
+    }
+    
+}
+.rejection-message, .thank-you-message{
+    position: absolute;
+    top: 0; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #ff0000;
+    text-align: center;
+    display: none; /* Hidden initially */
+}
