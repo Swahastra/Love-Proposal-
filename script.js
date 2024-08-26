@@ -17,13 +17,14 @@ document.getElementById('thank-you-message').style.display = 'none';
 // Ensure Bubu GIF is visible inside the container initially
 document.getElementById('bubu-gif').style.display = 'block';
 
-// Show Dudu GIF, proposal message, and buttons after 2 seconds
+// Show Dudu GIF and Proposal Text, and start music after 2 seconds
 setTimeout(() => {
     document.getElementById('dudu-gif').style.display = 'block';
     document.getElementById('proposal-text').style.display = 'block';
-    playMusic('proposal-music'); // Play proposal music when proposal text appears
+    playMusic('proposal-music'); // Play proposal music when Dudu GIF is visible
 }, 2000);
 
+// Function to trigger the Yes condition
 function triggerYesCondition() {
     stopAllMusic(); // Stop all music
 
@@ -53,6 +54,7 @@ function triggerYesCondition() {
     document.getElementById('no-button').style.display = 'none';
 }
 
+// Function to trigger the No condition
 function triggerNoCondition() {
     stopAllMusic(); // Stop all music
 
