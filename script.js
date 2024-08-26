@@ -24,10 +24,7 @@ setTimeout(() => {
     playMusic('proposal-music'); // Play proposal music when Dudu GIF is visible
 }, 2000);
 
-// Function to trigger the Yes condition
 function triggerYesCondition() {
-    stopAllMusic(); // Stop all music
-
     // Replace bubu GIF with yes GIF
     document.getElementById('bubu-gif').style.display = 'none';
     document.getElementById('yes-gif').style.display = 'block';
@@ -42,7 +39,8 @@ function triggerYesCondition() {
     // Show Thank You message
     document.getElementById('thank-you-message').style.display = 'block';
 
-    // Play thank-you music
+    // Stop proposal music and play thank-you music
+    stopMusic('proposal-music');
     playMusic('thankyou-music');
 
     // Animate heart emojis inside the blur container
@@ -54,10 +52,7 @@ function triggerYesCondition() {
     document.getElementById('no-button').style.display = 'none';
 }
 
-// Function to trigger the No condition
 function triggerNoCondition() {
-    stopAllMusic(); // Stop all music
-
     // Keep Bubu GIF in place
     document.getElementById('bubu-gif').style.display = 'block';
 
@@ -68,7 +63,8 @@ function triggerNoCondition() {
     // Display Rejection Message
     document.getElementById('rejection-message').style.display = 'block';
 
-    // Play rejection music
+    // Stop proposal music and play rejection music
+    stopMusic('proposal-music');
     playMusic('rejection-music');
 
     // Animate sad emojis inside the blur container
@@ -85,6 +81,15 @@ function playMusic(audioId) {
     let audio = document.getElementById(audioId);
     if (audio) {
         audio.play();
+    }
+}
+
+// Function to stop music by ID
+function stopMusic(audioId) {
+    let audio = document.getElementById(audioId);
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
     }
 }
 
