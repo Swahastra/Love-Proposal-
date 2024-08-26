@@ -21,7 +21,7 @@ document.getElementById('bubu-gif').style.display = 'block';
 setTimeout(() => {
     document.getElementById('dudu-gif').style.display = 'block';
     document.getElementById('proposal-text').style.display = 'block';
-    playMusic('proposal-music'); // Play music when proposal text appears
+    playMusic('proposal-music'); // Play proposal music when proposal text appears
 }, 2000);
 
 function triggerYesCondition() {
