@@ -6,8 +6,11 @@ document.getElementById('yes-gif').style.display = 'none';
 document.getElementById('rejection-message').style.display = 'none';
 document.getElementById('thank-you-message').style.display = 'none';
 
-// Start playing the Proposal Text music as soon as the script runs
-playMusic('proposal-music'); // Play the proposal music immediately
+// Start playing the Proposal Text music immediately
+let proposalMusic = document.getElementById('proposal-music');
+if (proposalMusic) {
+    proposalMusic.play();
+}
 
 // Ensure Bubu GIF is visible inside the container initially
 document.getElementById('bubu-gif').style.display = 'block';
