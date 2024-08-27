@@ -1,3 +1,11 @@
+document.getElementById('yes-button').onclick = () => {
+    triggerYesCondition();
+};
+
+document.getElementById('no-button').onclick = () => {
+    triggerNoCondition();
+};
+
 // Initial setup
 document.getElementById('dudu-gif').style.display = 'none';
 document.getElementById('crying-gif').style.display = 'none';
@@ -6,39 +14,15 @@ document.getElementById('yes-gif').style.display = 'none';
 document.getElementById('rejection-message').style.display = 'none';
 document.getElementById('thank-you-message').style.display = 'none';
 
-// Start playing the Proposal Text music after a slight delay
-let proposalMusic = document.getElementById('proposal-music');
-
-// Function to play proposal music
-function playProposalMusic() {
-    if (proposalMusic) {
-        proposalMusic.play().catch((error) => {
-            console.log("Autoplay prevented, waiting for user interaction:", error);
-            // Add a listener for user interaction to play the music
-            document.body.addEventListener('click', playProposalMusic);
-        });
-    }
-}
-
-// Play the proposal music with a slight delay
-setTimeout(playProposalMusic, 500); // 0.5 second delay
-
 // Ensure Bubu GIF is visible inside the container initially
 document.getElementById('bubu-gif').style.display = 'block';
 
-// Show Dudu GIF and Proposal Text after 2 seconds
+// Show Dudu GIF and Proposal Text, and start music after 2 seconds
 setTimeout(() => {
     document.getElementById('dudu-gif').style.display = 'block';
     document.getElementById('proposal-text').style.display = 'block';
+    playMusic('proposal-music'); // Play proposal music when Dudu GIF is visible
 }, 2000);
-
-document.getElementById('yes-button').onclick = () => {
-    triggerYesCondition();
-};
-
-document.getElementById('no-button').onclick = () => {
-    triggerNoCondition();
-};
 
 function triggerYesCondition() {
     // Replace bubu GIF with yes GIF
