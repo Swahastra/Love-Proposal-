@@ -1,11 +1,3 @@
-document.getElementById('yes-button').onclick = () => {
-    triggerYesCondition();
-};
-
-document.getElementById('no-button').onclick = () => {
-    triggerNoCondition();
-};
-
 // Initial setup
 document.getElementById('dudu-gif').style.display = 'none';
 document.getElementById('crying-gif').style.display = 'none';
@@ -14,15 +6,25 @@ document.getElementById('yes-gif').style.display = 'none';
 document.getElementById('rejection-message').style.display = 'none';
 document.getElementById('thank-you-message').style.display = 'none';
 
+// Start playing the Proposal Text music as soon as the script runs
+playMusic('proposal-music'); // Play the proposal music immediately
+
 // Ensure Bubu GIF is visible inside the container initially
 document.getElementById('bubu-gif').style.display = 'block';
 
-// Show Dudu GIF and Proposal Text, and start music after 2 seconds
+// Show Dudu GIF and Proposal Text after 2 seconds
 setTimeout(() => {
     document.getElementById('dudu-gif').style.display = 'block';
     document.getElementById('proposal-text').style.display = 'block';
-    playMusic('proposal-music'); // Play proposal music when Dudu GIF is visible
 }, 2000);
+
+document.getElementById('yes-button').onclick = () => {
+    triggerYesCondition();
+};
+
+document.getElementById('no-button').onclick = () => {
+    triggerNoCondition();
+};
 
 function triggerYesCondition() {
     // Replace bubu GIF with yes GIF
