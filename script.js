@@ -6,11 +6,22 @@ document.getElementById('yes-gif').style.display = 'none';
 document.getElementById('rejection-message').style.display = 'none';
 document.getElementById('thank-you-message').style.display = 'none';
 
-// Start playing the Proposal Text music immediately
+// Start playing the Proposal Text music after a slight delay
 let proposalMusic = document.getElementById('proposal-music');
-if (proposalMusic) {
-    proposalMusic.play();
+
+// Function to play proposal music
+function playProposalMusic() {
+    if (proposalMusic) {
+        proposalMusic.play().catch((error) => {
+            console.log("Autoplay prevented, waiting for user interaction:", error);
+            // Add a listener for user interaction to play the music
+            document.body.addEventListener('click', playProposalMusic);
+        });
+    }
 }
+
+// Play the proposal music with a slight delay
+setTimeout(playProposalMusic, 500); // 0.5 second delay
 
 // Ensure Bubu GIF is visible inside the container initially
 document.getElementById('bubu-gif').style.display = 'block';
